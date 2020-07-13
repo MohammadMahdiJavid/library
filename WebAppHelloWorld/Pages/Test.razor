@@ -1,0 +1,26 @@
+@* @page "/line"
+<div class="container">    
+    
+</div>
+
+@code {
+    
+} *@
+
+@* 
+            <div class="row" style="background-color: white;">
+                <div class="col-md-6 col-sm-12 p-4">
+                    <label>Smooth <RadzenCheckBox @bind-Value="@smooth" Name="smooth"></RadzenCheckBox></label>
+                    <RadzenChart>
+                        <RadzenLineSeries Smooth="@smooth" Data="@analysor.Datas[@book.Name]" CategoryProperty="Words" Title="@book.Name" LineType="LineType.Dashed" ValueProperty="RiseOrFall">
+                            <RadzenMarkers MarkerType="MarkerType.Circle" />
+                        </RadzenLineSeries>
+                        <RadzenCategoryAxis Padding="20" Formatter="@Total_Words"/>     
+                        <RadzenValueAxis Formatter="@NegativeOrPositive"> @* // mehvare y // @*mehvare x FormatString="He" 
+                            <RadzenGridLines Visible="true" />
+                            <RadzenAxisTitle Text="Analysing Books" />
+                        </RadzenValueAxis>
+                    </RadzenChart>
+                </div>
+            </div> 
+*@

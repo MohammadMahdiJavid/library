@@ -1,0 +1,13 @@
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\bin\Debug\netcoreapp3.1\WebAppHelloWorld.Core.exe
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\bin\Debug\netcoreapp3.1\WebAppHelloWorld.Core.deps.json
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\bin\Debug\netcoreapp3.1\WebAppHelloWorld.Core.runtimeconfig.json
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\bin\Debug\netcoreapp3.1\WebAppHelloWorld.Core.runtimeconfig.dev.json
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\bin\Debug\netcoreapp3.1\WebAppHelloWorld.Core.dll
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\bin\Debug\netcoreapp3.1\WebAppHelloWorld.Core.pdb
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\obj\Debug\netcoreapp3.1\WebAppHelloWorld.Core.csprojAssemblyReference.cache
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\obj\Debug\netcoreapp3.1\WebAppHelloWorld.Core.AssemblyInfoInputs.cache
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\obj\Debug\netcoreapp3.1\WebAppHelloWorld.Core.AssemblyInfo.cs
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\obj\Debug\netcoreapp3.1\WebAppHelloWorld.Core.csproj.CoreCompileInputs.cache
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\obj\Debug\netcoreapp3.1\WebAppHelloWorld.Core.dll
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\obj\Debug\netcoreapp3.1\WebAppHelloWorld.Core.pdb
+C:\git\AP98992\TA\AW13\WebAppHelloWorld.Core\obj\Debug\netcoreapp3.1\WebAppHelloWorld.Core.genruntimeconfig.cache

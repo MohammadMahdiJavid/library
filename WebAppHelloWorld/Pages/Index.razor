@@ -1,0 +1,107 @@
+﻿@page "/"
+@inject Library lib
+@inject Analyzer analysor
+@using System.Globalization
+@using System.ComponentModel.DataAnnotations
+
+<link rel="stylesheet" href="MyCss/index.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> @*search bar*@ 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">    @*search bar*@ 
+
+<div class="container h-100" style="margin-top: 10rem; margin-bottom: 10rem;">    
+    <div class="d-flex justify-content-center h-100">        
+            <EditForm Model="search" OnValidSubmit="FindBook">
+                <DataAnnotationsValidator />
+                <ValidationSummary style="color: white; display: block;"/>                
+                <div class="searchbar">                
+                    <InputText @bind-Value="search.BookName" class="search_input"/>                
+                    <button class="search_icon" type="submit"><i class="fas fa-search"></i></button>
+                </div>        
+            </EditForm>        
+        </div>    
+    @if (Books.Count != 0)
+    {
+        @foreach (Book book in Books)
+        {            
+            <div class="row" style="margin-top: 10rem;">        
+                <div class="card" style="width: 18rem;">
+                <img src="@book.ImagePath" class="card-img-top">
+                    <div class="card-body">
+                    <h5 class="card-title">@book.Name</h5>
+                    <p class="card-text">@book.Description</p>
+                    </div>
+                </div>  
+            </div>          
+
+            <div class="row" style="background-color: white;">
+                <div class="col-md-11 col-sm-12 p-4">
+                    <label>Smooth <RadzenCheckBox @bind-Value="@smooth" Name="smooth"></RadzenCheckBox></label>
+                    <RadzenChart>
+                        <RadzenLineSeries Smooth="@smooth" Data="@analysor.Datas[@book.Name]" CategoryProperty="Words" Title="@book.Name" ValueProperty="RiseOrFall">
+                            <RadzenMarkers MarkerType="MarkerType.Circle" />
+                        </RadzenLineSeries>
+                        <RadzenCategoryAxis Padding="20" Formatter="@Total_Words"/>     
+                        <RadzenValueAxis Formatter="@NegativeOrPositive"> @* // mehvare y // @*mehvare x FormatString="He" *@
+                            <RadzenGridLines Visible="true" />
+                            <RadzenAxisTitle Text="Analysing Books" />
+                        </RadzenValueAxis>
+                    </RadzenChart>
+                </div>
+            </div>                  
+
+            <div class="row">
+                <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Words</th>
+                    <th scope="col">Positive Words</th>
+                    <th scope="col">Negative Words</th>
+                    </tr>
+                </thead>
+                <tbody style="background-color: white;">
+                    <tr>
+                    <th scope="row">1</th>
+                    <td>@book.count</td>
+                    <td>@book.positive</td>
+                    <td>@book.negative</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>                             
+        }
+    }
+</div>
+
+@code
+{
+    Search search = new Search();
+    bool smooth = true; // male nemodar hast
+    List <Book> Books = new List <Book> ();    
+    public void FindBook() {        
+        foreach(Book book in lib.Books) 
+            if (book.Name.ToLower().Contains(search.BookName.ToLower()) && !string.IsNullOrEmpty(search.BookName))
+                Books.Add(book);
+    }
+    public string Total_Words(object category) => category.ToString(); // nemodar // Formatter
+    public string NegativeOrPositive(object value) => value.ToString(); // nemodar // Formatter
+    protected override void OnInitialized()
+    {
+        int positive = 0;
+        int negative = 0;
+        int count = 0;
+
+        foreach (Book book in lib.Books)
+        {
+            foreach(DataItem di in analysor.Datas[book.Name])
+            {
+                count += di.Words;
+                positive += di.PositiveWords;
+                negative += di.NegativeWords;
+            }                
+            book.positive = positive;
+            book.negative = negative;
+            book.count = count;            
+        }            
+    }
+}
